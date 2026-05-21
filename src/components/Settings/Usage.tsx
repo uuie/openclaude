@@ -23,6 +23,7 @@ import { ProgressBar } from '../design-system/ProgressBar.js';
 import { isEligibleForOverageCreditGrant, OverageCreditUpsell } from '../LogoV2/OverageCreditUpsell.js';
 import { CodexUsage } from './CodexUsage.js';
 import { MiniMaxUsage } from './MiniMaxUsage.js';
+import { AtomCodeUsage } from './AtomCodeUsage.js';
 import { UnsupportedUsage } from './UnsupportedUsage.js';
 type LimitBarProps = {
   title: string;
@@ -284,6 +285,9 @@ export function Usage(): React.ReactNode {
   }
   if (usageDescriptor.resolvedId === 'minimax' && usageDescriptor.supported) {
     return <MiniMaxUsage />;
+  }
+  if (usageDescriptor.resolvedId === 'atomcode' && usageDescriptor.supported) {
+    return <AtomCodeUsage />;
   }
   if (usageDescriptor.resolvedId === 'anthropic' && usageDescriptor.supported) {
     return <AnthropicUsage />;

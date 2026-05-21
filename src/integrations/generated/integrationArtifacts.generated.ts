@@ -134,7 +134,7 @@ export const PROVIDER_PRESET_MANIFEST = [
     "gatewayId": "atomcode",
     "description": "AtomCode (GitCode) DeepSeek API endpoint",
     "apiKeyEnvVars": [
-      "ATOMCODE_API_KEY"
+      "OPENAI_API_KEY"
     ],
     "baseUrlEnvVars": [
       "ATOMCODE_BASE_URL"

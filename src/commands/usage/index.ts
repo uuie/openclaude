@@ -1,3 +1,4 @@
+import { getIsNonInteractiveSession } from '../../bootstrap/state.js'
 import '../../integrations/index.js'
 import {
   ensureIntegrationsLoaded,
@@ -169,9 +170,24 @@ export function getUsageDescriptor(
   }
 }
 
-export default {
+export const usage: Command = {
   type: 'local-jsx',
   name: 'usage',
   description: 'Show plan usage limits',
+  isEnabled: () => !getIsNonInteractiveSession(),
   load: () => import('./usage.js'),
-} satisfies Command
+}
+
+export const usageNonInteractive: Command = {
+  type: 'local',
+  name: 'usage',
+  supportsNonInteractive: true,
+  description: 'Show plan usage limits',
+  get isHidden() {
+    return !getIsNonInteractiveSession()
+  },
+  isEnabled() {
+    return getIsNonInteractiveSession()
+  },
+  load: () => import('./usage-noninteractive.js'),
+}

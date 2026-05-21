@@ -10,7 +10,7 @@ export default defineGateway({
   setup: {
     requiresAuth: true,
     authMode: 'api-key',
-    credentialEnvVars: ['ATOMCODE_API_KEY'],
+    credentialEnvVars: ['OPENAI_API_KEY'],
   },
   startup: {
     probeReadiness: 'openai-compatible-models',
@@ -28,7 +28,7 @@ export default defineGateway({
   preset: {
     id: 'atomcode',
     description: 'AtomCode (GitCode) DeepSeek API endpoint',
-    apiKeyEnvVars: ['ATOMCODE_API_KEY'],
+    apiKeyEnvVars: ['OPENAI_API_KEY'],
     baseUrlEnvVars: ['ATOMCODE_BASE_URL'],
     modelEnvVars: ['OPENAI_MODEL'],
     vendorId: 'deepseek',
@@ -38,9 +38,9 @@ export default defineGateway({
     routing: {
       matchBaseUrlHosts: ['api-ai.gitcode.com'],
     },
-    credentialEnvVars: ['ATOMCODE_API_KEY'],
+    credentialEnvVars: ['OPENAI_API_KEY'],
     missingCredentialMessage:
-      'Set ATOMCODE_API_KEY for the AtomCode (GitCode) provider.',
+      'Set OPENAI_API_KEY for the AtomCode (GitCode) provider.',
   },
   catalog: {
     source: 'hybrid',
@@ -69,5 +69,5 @@ export default defineGateway({
       },
     ],
   },
-  usage: { supported: false },
+  usage: { supported: true },
 })
